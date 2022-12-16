@@ -15,13 +15,27 @@ npm install --save react-confection
 ```jsx
 import React, { Component } from 'react'
 
-import MyComponent from 'react-confection'
-import 'react-confection/dist/index.css'
+import {useInterval} from 'react-confection'
 
-class Example extends Component {
-  render() {
-    return <MyComponent />
-  }
+
+export default function() {
+  const [count, setCount] = useState(0)
+
+
+  useInterval(()=>{
+    setCount(count+1)
+  }, 1234)
+
+
+  return <>
+    <h2> useInterval </h2>
+    
+    <p>
+      Just a perpetual timer that snuggles with React.  This one updates a counter every 1,234ms.
+      <br />
+      Count: {count}
+    </p>
+  </>
 }
 ```
 
