@@ -14,7 +14,7 @@ const App = () => {
   const [camFlip, setCamFlip] = useState(false)
 
 
-  useInterval(()=>{
+  const cancelCounter = useInterval(()=>{
     setCount(count+1)
   }, 1234)
 
@@ -42,9 +42,11 @@ const App = () => {
 
     <h2> useInterval </h2>
     <p>
-      Just a perpetual timer that snuggles with React.  This one updates a counter every 1,234ms.
+      A perpetual timer that snuggles with React.  This one updates a counter every 1,234ms.
       <br />
       Count: {count}
+      <br />
+      <button onClick={E=>cancelCounter()}>Cancel Timer</button>
     </p>
 
 
