@@ -22,6 +22,8 @@ const App = () => {
   return <>
     <h1>😄 react-confection 😄</h1>
 
+    <h4>made using <a href="https://www.npmjs.com/package/create-react-library">create-react-library</a></h4>
+
     <p>
       <em>react-confection</em> is a cornucopia of hooks and components that I need/like/want in my projects.
     </p>
