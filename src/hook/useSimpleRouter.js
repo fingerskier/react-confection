@@ -7,9 +7,10 @@ export default function useSimpleRouter() {
   
   
   const handleHashChange = () => {
-    if (!window.location.hash) return
+    const V = window.location.hash.substring(1).split('/')
     
-    const V = window.location.hash.substring(1)
+    setContext(V)
+    
     
     const Q = window.location.search.substring(1)
     
@@ -22,8 +23,6 @@ export default function useSimpleRouter() {
       
       setState(newQuery)
     }
-    
-    setContext(V)
   }
   
   
