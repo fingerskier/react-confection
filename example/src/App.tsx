@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 
 import {useLocalStorage} from "react-confection";
 import {useInterval} from "react-confection";
@@ -7,7 +7,7 @@ import {Webcam} from 'react-confection'
 import 'react-confection/dist/index.css'
 
 
-const App = () => {
+const App: React.FC = () => {
   const [state, setState] = useLocalStorage('test', 'value')
 
   const [count, setCount] = useState(0)

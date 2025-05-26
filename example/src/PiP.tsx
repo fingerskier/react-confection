@@ -1,4 +1,7 @@
-export const PiP = () => {
+import React from 'react'
+import { PictureInPicture } from 'react-confection'
+
+export const PiP: React.FC = () => {
   return (
     <PictureInPicture
       width={400}
@@ -14,3 +17,5 @@ export const PiP = () => {
     </PictureInPicture>
   );
 };
+
+export default PiP;
