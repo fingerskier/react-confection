@@ -1,6 +1,6 @@
 # react-confection
 
-> A collection of useful react stuff.
+> A collection of useful React utilities written in TypeScript.
 
 [![NPM](https://img.shields.io/npm/v/react-confection.svg)](https://www.npmjs.com/package/react-confection) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
@@ -13,7 +13,7 @@ npm install --save react-confection
 ## Usage
 
 ```jsx
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 
 import {useInterval} from 'react-confection'
 

@@ -9,7 +9,11 @@ import useWebsocket from "./hook/useWebsocket";
 import Webcam from './ux/Webcam'
 
 
-export const ExampleComponent = ({ text }) => {
+export interface ExampleComponentProps {
+  text: string
+}
+
+export const ExampleComponent: React.FC<ExampleComponentProps> = ({ text }) => {
   return <div className={styles.test}>Example Component: {text}</div>
 }
 

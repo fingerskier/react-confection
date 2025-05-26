@@ -7,7 +7,8 @@
   "repository": "fingerskier/react-confection",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
-  "source": "src/index.js",
+  "types": "dist/index.d.ts",
+  "source": "src/index.ts",
   "engines": {
     "node": ">=16"
   },
@@ -46,7 +47,8 @@
     "prettier": "^3.2.5",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-scripts": "^5.0.1"
+    "react-scripts": "^5.0.1",
+    "typescript": "^5.4.0"
   },
   "files": [
     "dist"
