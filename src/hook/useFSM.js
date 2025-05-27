@@ -1,9 +1,5 @@
-import React from 'react'
-import stateinator from 'stateinator'
-
-
 export default function useFSM() {
-  return (
-    <div>useFSM</div>
-  )
+    // your hook logic here
+    // return state, functions, etc.
+    return {};
 }

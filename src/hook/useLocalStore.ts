@@ -97,8 +97,8 @@ export function localStore<
   // --- preload defaults ----------------------------------------------------
   Object.entries(preload).forEach(([k, v]) => {
     const key = k as Key
-    if (instance[key] === undefined || instance[key] === null) {
-      instance[key] = v as T[Key]
+    if ((instance as any)[key] === undefined || (instance as any)[key] === null) {
+      (instance as any)[key] = v
     }
   })
 
@@ -112,8 +112,8 @@ export function _default<
   T extends Record<string, unknown>,
   K extends keyof T,
 >(key: K, value: T[K], instance: StoreInstance<T>): T[K] {
-  if (instance[key] === undefined || instance[key] === null) {
-    instance[key] = value
+  if ((instance as any)[key] === undefined || (instance as any)[key] === null) {
+    (instance as any)[key] = value
   }
   return value
 }
