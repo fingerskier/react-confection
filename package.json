@@ -5,10 +5,9 @@
   "main": "dist/react-confection.umd.js",
   "module": "dist/react-confection.es.js",
   "name": "react-confection",
-  "private": true,
   "type": "module",
   "types": "dist/types/index.d.ts",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && npx vite build && npm run copy-types",
