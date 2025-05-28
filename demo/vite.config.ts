@@ -12,6 +12,8 @@ export default defineConfig({
       '@com': '/src/com',
       '@assets': '/src/assets',
       '@': '/src',
+      '@hook': path.resolve(__dirname, '../src/hook'),
+      '@ux': path.resolve(__dirname, '../src/ux'),
       'react-confection': path.resolve(__dirname, '../dist/react-confection.es.js'),
     },
   },
