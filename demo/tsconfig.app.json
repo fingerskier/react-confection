@@ -21,7 +21,14 @@
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+    "paths": {
+      "@com/*": ["./src/com/*"],
+      "@assets/*": ["./src/assets/*"],
+      "@hook/*": ["../src/hook/*"],
+      "@ux/*": ["../src/ux/*"],
+      "react-confection": ["../src/index.ts"]
+    }
   },
   "include": ["src"]
 }
