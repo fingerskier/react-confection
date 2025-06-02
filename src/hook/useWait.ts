@@ -13,7 +13,7 @@ export default function useWait(
   let ticker: NodeJS.Timeout
   
 
-  const cancelSafety = useTimeout(() => {
+  const [startSafety,cancelSafety] = useTimeout(() => {
     setTimeoutState(true)
   }, timeoutSeconds * 1000)
 
@@ -25,6 +25,7 @@ export default function useWait(
     }
   }, [])
   
+
   useEffect(() => {
     if (condition) {
       setDone(true)
@@ -32,10 +33,11 @@ export default function useWait(
   }, [condition])
 
 
-  return new Promise((resolve, reject) => {
+  const waiter = new Promise<void>((resolve, reject) => {
+    startSafety()
     ticker = setInterval(() => {
       if (done) {
-        resolve()
+        resolve(undefined)
       }
 
       if (timeout) {
@@ -44,4 +46,7 @@ export default function useWait(
       }
     }, intervalMilliseconds)
   })
+
+
+  return waiter
 }

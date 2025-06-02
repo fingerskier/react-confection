@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import type { ReactNode } from 'react'
-import { usePictureInPicture } from '@hook/usePictureInPicture'
+import usePictureInPicture from '@hook/usePictureInPicture'
 
 type PictureInPictureProps = {
   children: ReactNode
@@ -12,7 +12,7 @@ type PictureInPictureProps = {
   controls?: boolean
 }
 
-export const PictureInPicture = ({
+export default function PictureInPicture({
   children,
   width = 320,
   height = 240,
@@ -20,7 +20,7 @@ export const PictureInPicture = ({
   onPiPExit,
   className = '',
   controls = true
-}: PictureInPictureProps) => {
+}: PictureInPictureProps) {
   const containerRef = useRef(null);
   const { isPiP, isSupported, togglePiP } = usePictureInPicture({ width, height });
 

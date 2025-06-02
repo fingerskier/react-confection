@@ -4,7 +4,7 @@ export default function useWait(condition, timeoutSeconds = 60, intervalMillisec
     const [done, setDone] = useState(false);
     const [timeout, setTimeoutState] = useState(false);
     let ticker;
-    const cancelSafety = useTimeout(() => {
+    const [startSafety, cancelSafety] = useTimeout(() => {
         setTimeoutState(true);
     }, timeoutSeconds * 1000);
     useEffect(() => {
@@ -18,10 +18,11 @@ export default function useWait(condition, timeoutSeconds = 60, intervalMillisec
             setDone(true);
         }
     }, [condition]);
-    return new Promise((resolve, reject) => {
+    const waiter = new Promise((resolve, reject) => {
+        startSafety();
         ticker = setInterval(() => {
             if (done) {
-                resolve();
+                resolve(undefined);
             }
             if (timeout) {
                 clearInterval(ticker);
@@ -29,4 +30,5 @@ export default function useWait(condition, timeoutSeconds = 60, intervalMillisec
             }
         }, intervalMilliseconds);
     });
+    return waiter;
 }

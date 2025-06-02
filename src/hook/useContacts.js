@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-const useContactPicker = () => {
+export default function useContacts() {
     const [contacts, setContacts] = useState([]);
     const [error, setError] = useState(null);
     const pickContacts = useCallback(async () => {
@@ -18,5 +18,4 @@ const useContactPicker = () => {
         }
     }, []);
     return { contacts, error, pickContacts };
-};
-export default useContactPicker;
+}

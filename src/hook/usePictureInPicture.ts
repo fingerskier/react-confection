@@ -14,7 +14,7 @@ type PiPResult = {
   togglePiP: (element: HTMLElement) => Promise<void>
 }
 
-export const usePictureInPicture = (options: PiPOptions = { width: 320, height: 240 }): PiPResult => {
+export default function usePictureInPicture(options: PiPOptions = { width: 320, height: 240 }): PiPResult {
   const [isPiP, setIsPiP] = useState(false)
   const [pipWindow, setPipWindow] = useState<Window | null>(null)
   const [isSupported, setIsSupported] = useState(false)

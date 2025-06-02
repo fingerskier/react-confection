@@ -8,7 +8,8 @@ declare global {
   }
 }
 
-const useContactPicker = () => {
+
+export default function useContacts() {
   const [contacts, setContacts] = useState([]);
   const [error, setError] = useState<string | null>(null);
 
@@ -30,6 +31,4 @@ const useContactPicker = () => {
   }, []);
 
   return { contacts, error, pickContacts };
-};
-
-export default useContactPicker;
+}

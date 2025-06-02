@@ -9,8 +9,6 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      '@com': '/src/com',
-      '@assets': '/src/assets',
       '@': '/src',
       'react-confection': path.resolve(__dirname, '../dist/react-confection.es.js'),
     },

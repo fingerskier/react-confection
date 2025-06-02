@@ -7,9 +7,8 @@ declare global {
         };
     }
 }
-declare const useContactPicker: () => {
+export default function useContacts(): {
     contacts: never[];
     error: string | null;
     pickContacts: () => Promise<void>;
 };
-export default useContactPicker;

@@ -1,12 +1,70 @@
 import { useState } from 'react'
-import LocalStore from '@com/LocalStore'
+import {useLocalStorage, useUrl, useWebcam, useWebsocket} from 'react-confection'
+import ContactPicker from '@/com/ContactPicker'
+import DeviceOrientation from '@/com/DeviceOrientation'
+import Geo from '@/com/Geo'
+import Interval from '@/com/Interval'
+import LocalStore from '@/com/LocalStore'
+import Notification from '@/com/Notification'
+import PictureInPicture from '@/com/PictureInPicture'
+import ScreenOrientation from '@/com/ScreenOrientation'
+import Timeout from '@/com/Timeout'
+import Wait from '@/com/Wait'
+import Webcam from '@/com/Webcam'
+import Websocket from '@/com/Websocket'
 
 import './App.css'
 
+const TESTOR = [
+  'useContacts',
+  'useDeviceOrientation',
+  'useGeoLocation',
+  'useInterval',
+  'useLocalStore',
+  'useNotification',
+  'usePictureInPicture',
+  'useScreenOrientation',
+  'useTimeout',
+  'useWait',
+  'useWebcam',
+  'useWebsocket',
+]
+
+
 function App() {
+  const { context, query } = useUrl()
 
   return <>
-    <LocalStore />
+    <header> 
+      <h1> react-confection demo app </h1> 
+
+      <ul>
+        {TESTOR.map(val => (
+          <li key={val}>
+            <a href={`#${val}`}>{val}</a>
+          </li>
+        ))}
+      </ul>
+    </header>
+
+    <main>
+      {context==='useContacts' && <ContactPicker />}
+      {context==='useDeviceOrientation' && <DeviceOrientation />}
+      {context==='useGeoLocation' && <Geo />}
+      {context==='useInterval' && <Interval />}
+      {context==='useLocalStore' && <LocalStore />}
+      {context==='useLocalStorage' && <LocalStorage />}
+      {context==='useNotification' && <Notification />}
+      {context==='usePictureInPicture' && <PictureInPicture />}
+      {context==='useScreenOrientation' && <ScreenOrientation />}
+      {context==='useTimeout' && <Timeout />}
+      {context==='useUrl' && <Url />}
+      {context==='useWait' && <Wait />}
+      {context==='useWebcam' && <Webcam />}
+      {context==='useWebsocket' && <Websocket />}
+    </main>
+
+    <footer>&copy; 2025 react-confection</footer>
   </>
 }
 

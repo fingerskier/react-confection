@@ -8,5 +8,5 @@ type PictureInPictureProps = {
     className?: string;
     controls?: boolean;
 };
-export declare const PictureInPicture: ({ children, width, height, onPiPEnter, onPiPExit, className, controls }: PictureInPictureProps) => import("react/jsx-runtime").JSX.Element;
+export default function PictureInPicture({ children, width, height, onPiPEnter, onPiPExit, className, controls }: PictureInPictureProps): import("react/jsx-runtime").JSX.Element;
 export {};

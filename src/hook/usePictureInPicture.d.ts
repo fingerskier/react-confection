@@ -10,5 +10,5 @@ type PiPResult = {
     exitPiP: () => Promise<void>;
     togglePiP: (element: HTMLElement) => Promise<void>;
 };
-export declare const usePictureInPicture: (options?: PiPOptions) => PiPResult;
+export default function usePictureInPicture(options?: PiPOptions): PiPResult;
 export {};

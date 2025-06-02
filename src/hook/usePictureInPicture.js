@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-export const usePictureInPicture = (options = { width: 320, height: 240 }) => {
+export default function usePictureInPicture(options = { width: 320, height: 240 }) {
     const [isPiP, setIsPiP] = useState(false);
     const [pipWindow, setPipWindow] = useState(null);
     const [isSupported, setIsSupported] = useState(false);
@@ -79,4 +79,4 @@ export const usePictureInPicture = (options = { width: 320, height: 240 }) => {
         exitPiP,
         togglePiP,
     };
-};
+}
