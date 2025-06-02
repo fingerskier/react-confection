@@ -47,6 +47,13 @@ function App() {
       </ul>
     </header>
 
+    <ul>
+      {query.flarn}
+      <li><a href="?flarn=1#">flarn 1</a></li>
+      <li><a href="?flarn=2#">flarn 2</a></li>
+      <li><a href="?flarn=3#">flarn 3</a></li>
+    </ul>
+
     <main>
       {context==='useContacts' && <ContactPicker />}
       {context==='useDeviceOrientation' && <DeviceOrientation />}
