@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import {useState} from 'react'
 import { useTimeout } from 'react-confection'
 
@@ -29,18 +28,3 @@ export default function Timeout() {
     </div>
   )
 }
-=======
-import React, { useState } from 'react'
-import { useTimeout } from '@hook/useTimeout'
-
-export default function TimeoutDemo() {
-  const [fired, setFired] = useState(false)
-  useTimeout(() => setFired(true), 1000)
-  return (
-    <div>
-      <h1>useTimeout</h1>
-      <p>{fired ? 'Triggered' : 'Waiting...'}</p>
-    </div>
-  )
-}
->>>>>>> 4e69431607736d687a3387f46c650321984cd60e
