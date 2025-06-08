@@ -53,10 +53,13 @@ function App() {
       <li><a href="?flarn=2#asdf/qwer">flarn 2</a></li>
       <li><a href="?flarn=3#asdf/qwer/zxcv">flarn 3</a></li>
       <li>
+        <button onClick={() => goto('qwer', {flarn: '5'}, true)}>goto flarn 5</button>
+      </li>
+      <li>
         <button onClick={() => goto('asdf', {flarn: '4'})}>goto flarn 4</button>
       </li>
-      <li>  
-        <button onClick={() => goto('qwer', {flarn: '5'}, true)}>goto flarn 5</button>
+      <li>
+        <button onClick={() => goto(null, {flarn: '6'}, true)}>stay flarn 6</button>
       </li>
     </ul>
 

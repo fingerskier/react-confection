@@ -4,7 +4,13 @@ export default function useUrl() {
     const [query, setQuery] = useState({});
     const goto = (path, newQuery, replace = false) => {
         const queryString = newQuery ? new URLSearchParams(newQuery).toString() : '';
-        const newUrl = `?${queryString}#${path}`;
+        let newUrl = `?${queryString}`;
+        if (path) {
+            newUrl += `#${path}`;
+        }
+        else {
+            newUrl += `#${context}`;
+        }
         if (replace) {
             window.history.replaceState({}, '', newUrl);
         }
