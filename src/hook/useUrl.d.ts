@@ -1,9 +1,9 @@
-export default function useUrl(): {
+export interface UseUrlQuery {
+    [k: string]: string;
+}
+export interface UseUrlReturn {
     context: string | string[];
-    query: {
-        [k: string]: string;
-    };
-    goto: (path: string, newQuery?: {
-        [k: string]: string;
-    }, replace?: boolean) => void;
-};
+    query: UseUrlQuery;
+    goto: (path: string, newQuery?: UseUrlQuery, replace?: boolean) => void;
+}
+export default function useUrl(): UseUrlReturn;

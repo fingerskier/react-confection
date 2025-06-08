@@ -2,21 +2,26 @@ import { useEffect, useState } from 'react';
 export default function useUrl() {
     const [context, setContext] = useState('');
     const [query, setQuery] = useState({});
-    const goto = (path, newQuery, replace = false) => {
+    const goto = (path, Q, replaceQuery = false) => {
+        let newQuery;
+        if (replaceQuery) {
+            newQuery = Q;
+        }
+        else {
+            newQuery = {
+                ...query,
+                ...Q,
+            };
+        }
         const queryString = newQuery ? new URLSearchParams(newQuery).toString() : '';
-        let newUrl = `?${queryString}`;
+        let newUrl = queryString ? `?${queryString}` : '';
         if (path) {
             newUrl += `#${path}`;
         }
         else {
             newUrl += `#${context}`;
         }
-        if (replace) {
-            window.history.replaceState({}, '', newUrl);
-        }
-        else {
-            window.history.pushState({}, '', newUrl);
-        }
+        window.history.pushState({}, '', newUrl);
         handleHashChange();
     };
     const handleHashChange = () => {

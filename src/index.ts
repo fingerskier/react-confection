@@ -9,6 +9,7 @@ import usePictureInPicture from "./hook/usePictureInPicture"
 import useScreenOrientation from "./hook/useScreenOrientation"
 import useTimeout from "./hook/useTimeout"
 import useUrl from "./hook/useUrl"
+import type { UseUrlQuery, UseUrlReturn } from "./hook/useUrl"
 import useWait from "./hook/useWait"
 import useWebcam from "./hook/useWebcam"
 import useWebsocket from "./hook/useWebSocket"
@@ -36,4 +37,9 @@ export {
   useWebcam,
   useWebsocket,
   Webcam,
+}
+
+export type {
+  UseUrlQuery,
+  UseUrlReturn,
 }

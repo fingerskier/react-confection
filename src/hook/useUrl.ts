@@ -1,14 +1,33 @@
 import {useEffect, useState} from 'react'
 
+export interface UseUrlQuery {
+  [k: string]: string
+}
 
-export default function useUrl() {
+export interface UseUrlReturn {
+  context: string | string[]
+  query: UseUrlQuery
+  goto: (path: string, newQuery?: UseUrlQuery, replace?: boolean) => void
+}
+
+export default function useUrl(): UseUrlReturn {
   const [context, setContext] = useState<string | string[]>('')
-  const [query, setQuery] = useState<{ [k: string]: string }>({})
+  const [query, setQuery] = useState<UseUrlQuery>({})
 
 
-  const goto = (path: string, newQuery?: { [k: string]: string }, replace = false) => {
+  const goto = (path: string, Q?: UseUrlQuery, replaceQuery:boolean = false) => {
+    let newQuery
+    if (replaceQuery) {
+      newQuery = Q
+    } else {
+      newQuery = {
+        ...query,
+        ...Q,
+      }
+    }
+
     const queryString = newQuery ? new URLSearchParams(newQuery).toString() : ''
-    let newUrl = `?${queryString}`
+    let newUrl = queryString ? `?${queryString}` : ''
 
     if (path) {
       newUrl += `#${path}`
@@ -16,11 +35,7 @@ export default function useUrl() {
       newUrl += `#${context}`
     }
 
-    if (replace) {
-      window.history.replaceState({}, '', newUrl)
-    } else {
-      window.history.pushState({}, '', newUrl)
-    }
+    window.history.pushState({}, '', newUrl)
     handleHashChange()
   }
 
