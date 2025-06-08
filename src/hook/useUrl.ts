@@ -6,6 +6,19 @@ export default function useUrl() {
   const [query, setQuery] = useState<{ [k: string]: string }>({})
 
 
+  const goto = (path: string, newQuery?: { [k: string]: string }, replace = false) => {
+    const queryString = newQuery ? new URLSearchParams(newQuery).toString() : ''
+    const newUrl = `?${queryString}#${path}`
+
+    if (replace) {
+      window.history.replaceState({}, '', newUrl)
+    } else {
+      window.history.pushState({}, '', newUrl)
+    }
+    handleHashChange()
+  }
+
+
   const handleHashChange = () => {
     const hash = window.location.hash.slice(1)
     const queryString = window.location.search
@@ -32,5 +45,5 @@ export default function useUrl() {
   }, [])
 
 
-  return { context, query }
+  return { context, query, goto }
 }

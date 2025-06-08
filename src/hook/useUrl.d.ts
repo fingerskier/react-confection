@@ -3,4 +3,7 @@ export default function useUrl(): {
     query: {
         [k: string]: string;
     };
+    goto: (path: string, newQuery?: {
+        [k: string]: string;
+    }, replace?: boolean) => void;
 };

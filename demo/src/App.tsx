@@ -32,7 +32,7 @@ const TESTOR = [
 
 
 function App() {
-  const { context, query } = useUrl()
+  const { context, query, goto } = useUrl()
 
   return <>
     <header> 
@@ -48,10 +48,16 @@ function App() {
     </header>
 
     <ul>
-      {query.flarn}
-      <li><a href="?flarn=1#">flarn 1</a></li>
-      <li><a href="?flarn=2#">flarn 2</a></li>
-      <li><a href="?flarn=3#">flarn 3</a></li>
+      <pre>{JSON.stringify({context,query}, null, 2)}</pre>
+      <li><a href="?flarn=1#asdf">flarn 1</a></li>
+      <li><a href="?flarn=2#asdf/qwer">flarn 2</a></li>
+      <li><a href="?flarn=3#asdf/qwer/zxcv">flarn 3</a></li>
+      <li>
+        <button onClick={() => goto('asdf', {flarn: '4'})}>goto flarn 4</button>
+      </li>
+      <li>  
+        <button onClick={() => goto('qwer', {flarn: '5'}, true)}>goto flarn 5</button>
+      </li>
     </ul>
 
     <main>

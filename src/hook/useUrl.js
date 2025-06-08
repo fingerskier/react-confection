@@ -2,6 +2,17 @@ import { useEffect, useState } from 'react';
 export default function useUrl() {
     const [context, setContext] = useState('');
     const [query, setQuery] = useState({});
+    const goto = (path, newQuery, replace = false) => {
+        const queryString = newQuery ? new URLSearchParams(newQuery).toString() : '';
+        const newUrl = `?${queryString}#${path}`;
+        if (replace) {
+            window.history.replaceState({}, '', newUrl);
+        }
+        else {
+            window.history.pushState({}, '', newUrl);
+        }
+        handleHashChange();
+    };
     const handleHashChange = () => {
         const hash = window.location.hash.slice(1);
         const queryString = window.location.search;
@@ -21,5 +32,5 @@ export default function useUrl() {
             window.removeEventListener('hashchange', handleHashChange);
         };
     }, []);
-    return { context, query };
+    return { context, query, goto };
 }
