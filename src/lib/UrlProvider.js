@@ -1,5 +1,7 @@
-import { useEffect, useState } from 'react';
-export default function useUrl() {
+import { jsx as _jsx } from "react/jsx-runtime";
+import { createContext, useContext, useEffect, useState } from 'react';
+const UrlContext = createContext(undefined);
+export function UrlProvider({ children }) {
     const [context, setContext] = useState('');
     const [query, setQuery] = useState({});
     const goto = (path, Q, replaceQuery = false) => {
@@ -43,5 +45,13 @@ export default function useUrl() {
             window.removeEventListener('hashchange', handleHashChange);
         };
     }, []);
-    return { context, query, goto };
+    const value = { context, query, goto };
+    return (_jsx(UrlContext.Provider, { value: value, children: children }));
+}
+export function useUrl() {
+    const context = useContext(UrlContext);
+    if (context === undefined) {
+        throw new Error('useUrl must be used within a UrlProvider');
+    }
+    return context;
 }

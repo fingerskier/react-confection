@@ -1,4 +1,5 @@
-import {useEffect, useState} from 'react'
+import { createContext, useContext, useEffect, useState } from 'react'
+import type { ReactNode } from 'react'
 
 export interface UseUrlQuery {
   [k: string]: string
@@ -10,12 +11,17 @@ export interface UseUrlReturn {
   goto: (path: string, newQuery?: UseUrlQuery, replace?: boolean) => void
 }
 
-export default function useUrl(): UseUrlReturn {
+const UrlContext = createContext<UseUrlReturn | undefined>(undefined)
+
+interface UrlProviderProps {
+  children: ReactNode
+}
+
+export function UrlProvider({ children }: UrlProviderProps) {
   const [context, setContext] = useState<string | string[]>('')
   const [query, setQuery] = useState<UseUrlQuery>({})
 
-
-  const goto = (path: string, Q?: UseUrlQuery, replaceQuery:boolean = false) => {
+  const goto = (path: string, Q?: UseUrlQuery, replaceQuery: boolean = false) => {
     let newQuery
     if (replaceQuery) {
       newQuery = Q
@@ -39,7 +45,6 @@ export default function useUrl(): UseUrlReturn {
     handleHashChange()
   }
 
-
   const handleHashChange = () => {
     const hash = window.location.hash.slice(1)
     const queryString = window.location.search
@@ -56,7 +61,6 @@ export default function useUrl(): UseUrlReturn {
     setQuery(queryObj)
   }
 
-
   useEffect(() => {
     window.addEventListener('hashchange', handleHashChange)
     handleHashChange()
@@ -65,6 +69,19 @@ export default function useUrl(): UseUrlReturn {
     }
   }, [])
 
+  const value: UseUrlReturn = { context, query, goto }
 
-  return { context, query, goto }
+  return (
+    <UrlContext.Provider value={value}>
+      {children}
+    </UrlContext.Provider>
+  )
 }
+
+export function useUrl(): UseUrlReturn {
+  const context = useContext(UrlContext)
+  if (context === undefined) {
+    throw new Error('useUrl must be used within a UrlProvider')
+  }
+  return context
+} 
