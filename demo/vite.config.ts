@@ -10,8 +10,6 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': '/src',
-      '@hook': path.resolve(__dirname, '../src/hook'),
-      '@ux': path.resolve(__dirname, '../src/ux'),
       'react-confection': path.resolve(__dirname, '../package/src'),
     },
   },

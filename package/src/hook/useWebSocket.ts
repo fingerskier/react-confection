@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import useInterval from '@hook/useInterval'
+import useInterval from '@/hook/useInterval'
 
 interface WebSocketState {
   [key: string]: any

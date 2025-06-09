@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "react": "^19.1.0",
-    "react-confection": "file:..",
+    "react-confection": "workspace:*",
     "react-dom": "^19.1.0"
   },
   "devDependencies": {

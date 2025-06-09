@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { usePictureInPicture } from '@hook/usePictureInPicture'
+import { usePictureInPicture } from '@/hook/usePictureInPicture'
 
 export default function PiPHookDemo() {
   const ref = useRef<HTMLDivElement>(null)

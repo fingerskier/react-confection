@@ -1,5 +1,5 @@
 import React from 'react'
-import useSimpleRouter from '@hook/useSimpleRouter'
+import useSimpleRouter from '@/hook/useSimpleRouter'
 
 export default function SimpleRouterDemo() {
   const router = useSimpleRouter()

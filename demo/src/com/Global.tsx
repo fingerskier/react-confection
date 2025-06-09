@@ -1,5 +1,5 @@
 import React from 'react'
-import useGlobal from '@hook/useGlobal'
+import useGlobal from '@/hook/useGlobal'
 
 export default function GlobalDemo() {
   const [value, setValue] = useGlobal('demoGlobal', '')

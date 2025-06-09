@@ -1,5 +1,5 @@
 import React from 'react'
-import { useLocalStorage } from '@hook/useLocalStorage'
+import { useLocalStorage } from '@/hook/useLocalStorage'
 
 export default function LocalStorageDemo() {
   const [value, setValue] = useLocalStorage('demo-storage', '')

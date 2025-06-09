@@ -1,5 +1,5 @@
 import React from 'react'
-import { PictureInPicture } from '@ux/PictureInPicture'
+import { PictureInPicture } from '@/ux/PictureInPicture'
 
 export default function PiPComponentDemo() {
   return (

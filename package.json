@@ -2,8 +2,8 @@
   "private": true,
   "packageManager": "npm@10.9.2",
   "workspaces": [
-    "package/*",
-    "demo/*"
+    "package",
+    "demo"
   ],
   "scripts": {
     "build": "turbo build",

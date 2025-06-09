@@ -15,7 +15,10 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "strict": true,
-    "composite": true
+    "composite": true,
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
   "include": ["src"]
 }

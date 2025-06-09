@@ -1,5 +1,5 @@
 import React from 'react'
-import useGeolocation from '@hook/useGeoLocation'
+import useGeolocation from '@/hook/useGeoLocation'
 
 export default function GeoLocationDemo() {
   const { position, error } = useGeolocation()

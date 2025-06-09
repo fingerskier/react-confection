@@ -1,5 +1,5 @@
 import React from 'react'
-import useContactPicker from '@hook/useContacts'
+import useContactPicker from '@/hook/useContacts'
 
 export default function ContactsDemo() {
   const { contacts, error, pickContacts } = useContactPicker()

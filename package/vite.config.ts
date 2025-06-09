@@ -27,9 +27,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@hook': '/src/hook',
-      '@ux': '/src/ux',
-      '@': '/src',
-    },
+      '@': '/src'
+    }
   },
 })
