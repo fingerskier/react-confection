@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useWebSocket } from 'react-confection'
+
 
 export default function WebSocketDemo() {
   const [messages, setMessages] = useState<string[]>([])
   const { data, transmit } = useWebSocket('wss://ws.ifelse.io')
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (data) setMessages(msgs => [...msgs, JSON.stringify(data)])
   }, [data])
 
