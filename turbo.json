@@ -3,7 +3,6 @@
   "globalDependencies": ["tsconfig.json", ".env"],
   "globalEnv": ["NODE_ENV"],
   "ui": "stream",
-
   "tasks": {
     "build": {
       "dependsOn": ["^build"],

@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import type { ReactNode } from 'react'
 import usePictureInPicture from '@/hook/usePictureInPicture'
 
+
 type PictureInPictureProps = {
   children: ReactNode
   width?: number
