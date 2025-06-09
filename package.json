@@ -7,7 +7,7 @@
   "name": "react-confection",
   "type": "module",
   "types": "dist/types/index.d.ts",
-  "version": "3.0.7",
+  "version": "3.0.8",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && npx vite build && npm run copy-types",
