@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react'
-import useTimeout from '@/hook/useTimeout'
+import useTimeout from './useTimeout'
 
 
 export default function useWait(
