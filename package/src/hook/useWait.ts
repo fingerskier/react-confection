@@ -1,16 +1,15 @@
 import {useEffect, useState} from 'react'
-import useTimeout from '@/hook/useTimeout'
+import useTimeout from './useTimeout'
 
 
 export default function useWait(
   condition: boolean,
   timeoutSeconds=60,
-  intervalMilliseconds=100,
-): Promise<void> {
+): {done: boolean, timeout: boolean} {
   const [done, setDone] = useState(false)
   const [timeout, setTimeoutState] = useState(false)
 
-  let ticker: NodeJS.Timeout
+  let ticker: NodeJS.Timeout = 0 as unknown as NodeJS.Timeout
   
 
   const [startSafety,cancelSafety] = useTimeout(() => {
@@ -19,6 +18,7 @@ export default function useWait(
 
 
   useEffect(() => {
+    startSafety()
     return () => {
       cancelSafety()
       clearInterval(ticker)
@@ -33,5 +33,5 @@ export default function useWait(
   }, [condition])
 
 
-  return done
+  return {done, timeout}
 }

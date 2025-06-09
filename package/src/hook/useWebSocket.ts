@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import useInterval from '@/hook/useInterval'
+import useInterval from './useInterval'
 
 interface WebSocketState {
   [key: string]: any
@@ -21,6 +21,12 @@ interface WebSocketResult {
   transmit: (data: any) => void
 }
 
+
+/**
+ * @param url - The url of the web socket server
+ * @param altUrl - An https url where the value might be retrieved through polling
+ * @returns An object with the data, error, state, and transmit function
+ */
 export default function useWebSocket(url: string, altUrl?: string): WebSocketResult {
   /**
    * altUrl = an https url where the value might be retrieved through polling

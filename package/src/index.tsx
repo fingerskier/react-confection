@@ -10,7 +10,7 @@ import useScreenOrientation from "./hook/useScreenOrientation"
 import useTimeout from "./hook/useTimeout"
 import useWait from "./hook/useWait"
 import useWebcam from "./hook/useWebcam"
-import useWebsocket from "./hook/useWebSocket"
+import useWebSocket from "./hook/useWebSocket"
 import { UrlProvider, useUrl } from "./lib/UrlProvider"
 
 
@@ -35,6 +35,6 @@ export {
   useUrl,
   useWait,
   useWebcam,
-  useWebsocket,
+  useWebSocket,
   Webcam,
 }

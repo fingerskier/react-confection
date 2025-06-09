@@ -37,8 +37,8 @@ __export(index_exports, {
   useTimeout: () => useTimeout,
   useUrl: () => useUrl,
   useWait: () => useWait,
-  useWebcam: () => useWebcam,
-  useWebsocket: () => useWebSocket
+  useWebSocket: () => useWebSocket,
+  useWebcam: () => useWebcam
 });
 module.exports = __toCommonJS(index_exports);
 
@@ -430,14 +430,15 @@ function useTimeout(callback, delay = 1e3) {
 
 // src/hook/useWait.ts
 var import_react11 = require("react");
-function useWait(condition, timeoutSeconds = 60, intervalMilliseconds = 100) {
+function useWait(condition, timeoutSeconds = 60) {
   const [done, setDone] = (0, import_react11.useState)(false);
   const [timeout, setTimeoutState] = (0, import_react11.useState)(false);
-  let ticker;
+  let ticker = 0;
   const [startSafety, cancelSafety] = useTimeout(() => {
     setTimeoutState(true);
   }, timeoutSeconds * 1e3);
   (0, import_react11.useEffect)(() => {
+    startSafety();
     return () => {
       cancelSafety();
       clearInterval(ticker);
@@ -448,7 +449,7 @@ function useWait(condition, timeoutSeconds = 60, intervalMilliseconds = 100) {
       setDone(true);
     }
   }, [condition]);
-  return done;
+  return { done, timeout };
 }
 
 // src/hook/useWebcam.ts
@@ -571,7 +572,7 @@ var UrlContext = (0, import_react14.createContext)(void 0);
 function UrlProvider({ children }) {
   const [context, setContext] = (0, import_react14.useState)("");
   const [query, setQuery] = (0, import_react14.useState)({});
-  const goto = (path, Q, replaceQuery = false) => {
+  const goto = (path = ".", Q, replaceQuery = false) => {
     let newQuery;
     if (replaceQuery) {
       newQuery = Q ?? null;
@@ -584,7 +585,20 @@ function UrlProvider({ children }) {
     const queryString = newQuery ? new URLSearchParams(newQuery).toString() : "";
     let newUrl = queryString ? `?${queryString}` : "";
     if (path) {
-      newUrl += `#${path}`;
+      let newPath = path.split("/");
+      console.log("newPath", newPath);
+      if (newPath[0] === ".") {
+        newPath.shift();
+        newPath = [context, ...newPath];
+        console.log("newPath", newPath);
+      } else if (newPath[0] === "..") {
+        const currentPath = context.split("/");
+        newPath.shift();
+        currentPath.pop();
+        newPath = [...currentPath, ...newPath];
+        console.log("newPath", newPath);
+      }
+      newUrl += `#${newPath.join("/")}`;
     } else {
       newUrl += `#${context}`;
     }
@@ -697,6 +711,6 @@ function Webcam_default({
   useTimeout,
   useUrl,
   useWait,
-  useWebcam,
-  useWebsocket
+  useWebSocket,
+  useWebcam
 });

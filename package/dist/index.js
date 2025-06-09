@@ -386,14 +386,15 @@ function useTimeout(callback, delay = 1e3) {
 
 // src/hook/useWait.ts
 import { useEffect as useEffect9, useState as useState9 } from "react";
-function useWait(condition, timeoutSeconds = 60, intervalMilliseconds = 100) {
+function useWait(condition, timeoutSeconds = 60) {
   const [done, setDone] = useState9(false);
   const [timeout, setTimeoutState] = useState9(false);
-  let ticker;
+  let ticker = 0;
   const [startSafety, cancelSafety] = useTimeout(() => {
     setTimeoutState(true);
   }, timeoutSeconds * 1e3);
   useEffect9(() => {
+    startSafety();
     return () => {
       cancelSafety();
       clearInterval(ticker);
@@ -404,7 +405,7 @@ function useWait(condition, timeoutSeconds = 60, intervalMilliseconds = 100) {
       setDone(true);
     }
   }, [condition]);
-  return done;
+  return { done, timeout };
 }
 
 // src/hook/useWebcam.ts
@@ -527,7 +528,7 @@ var UrlContext = createContext(void 0);
 function UrlProvider({ children }) {
   const [context, setContext] = useState12("");
   const [query, setQuery] = useState12({});
-  const goto = (path, Q, replaceQuery = false) => {
+  const goto = (path = ".", Q, replaceQuery = false) => {
     let newQuery;
     if (replaceQuery) {
       newQuery = Q ?? null;
@@ -540,7 +541,20 @@ function UrlProvider({ children }) {
     const queryString = newQuery ? new URLSearchParams(newQuery).toString() : "";
     let newUrl = queryString ? `?${queryString}` : "";
     if (path) {
-      newUrl += `#${path}`;
+      let newPath = path.split("/");
+      console.log("newPath", newPath);
+      if (newPath[0] === ".") {
+        newPath.shift();
+        newPath = [context, ...newPath];
+        console.log("newPath", newPath);
+      } else if (newPath[0] === "..") {
+        const currentPath = context.split("/");
+        newPath.shift();
+        currentPath.pop();
+        newPath = [...currentPath, ...newPath];
+        console.log("newPath", newPath);
+      }
+      newUrl += `#${newPath.join("/")}`;
     } else {
       newUrl += `#${context}`;
     }
@@ -652,6 +666,6 @@ export {
   useTimeout,
   useUrl,
   useWait,
-  useWebcam,
-  useWebSocket as useWebsocket
+  useWebSocket,
+  useWebcam
 };

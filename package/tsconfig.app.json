@@ -12,6 +12,12 @@
     "verbatimModuleSyntax": true,
     "moduleDetection": "force",
     "jsx": "react-jsx",
+    "esModuleInterop": true,
+
+    /* Output */
+    "declaration": true,
+    "declarationDir": "dist/types",
+    "outDir": "dist",
 
     /* Linting */
     "strict": true,
@@ -20,6 +26,7 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
 
+    "baseUrl": ".",
     "paths": {
       "@hook/*": ["./src/hook/*"],
       "@ux/*": ["./src/ux/*"],
@@ -28,8 +35,5 @@
 
     "composite": true
   },
-  "declaration": true,
-  "declarationDir": "dist/types",
-  "emitDeclarationOnly": true,
   "include": ["src"]
 }

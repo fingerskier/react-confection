@@ -18,11 +18,11 @@ interface UrlProviderProps {
 }
 
 export function UrlProvider({ children }: UrlProviderProps) {
-  const [context, setContext] = useState<string | string[]>('')
+  const [context, setContext] = useState<string>('')
   const [query, setQuery] = useState<UseUrlQuery>({})
 
   const goto = (
-    path?: string | null,
+    path: string='.',
     Q?: UseUrlQuery | null,
     replaceQuery: boolean = false,
   ) => {
@@ -40,7 +40,20 @@ export function UrlProvider({ children }: UrlProviderProps) {
     let newUrl = queryString ? `?${queryString}` : ''
 
     if (path) {
-      newUrl += `#${path}`
+      let newPath = path.split('/')
+      console.log('newPath', newPath)
+      if (newPath[0] === '.') {
+        newPath.shift()
+        newPath = [context, ...newPath]
+        console.log('newPath', newPath)
+      } else if (newPath[0] === '..') {
+        const currentPath = context.split('/')
+        newPath.shift()
+        currentPath.pop()
+        newPath = [...currentPath, ...newPath]
+        console.log('newPath', newPath)
+      }
+      newUrl += `#${newPath.join('/')}`
     } else {
       newUrl += `#${context}`
     }

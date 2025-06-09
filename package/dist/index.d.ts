@@ -94,7 +94,10 @@ declare const useScreenOrientation: () => Orientation;
 
 declare function useTimeout(callback: () => void, delay?: number): (() => void)[];
 
-declare function useWait(condition: boolean, timeoutSeconds?: number, intervalMilliseconds?: number): Promise<void>;
+declare function useWait(condition: boolean, timeoutSeconds?: number): {
+    done: boolean;
+    timeout: boolean;
+};
 
 interface WebcamResult {
     picBase64: string;
@@ -120,6 +123,11 @@ interface WebSocketResult {
     state: WebSocketState;
     transmit: (data: any) => void;
 }
+/**
+ * @param url - The url of the web socket server
+ * @param altUrl - An https url where the value might be retrieved through polling
+ * @returns An object with the data, error, state, and transmit function
+ */
 declare function useWebSocket(url: string, altUrl?: string): WebSocketResult;
 
 interface UseUrlQuery {
@@ -151,4 +159,4 @@ declare function export_default({ flipHorizontal, }: {
     flipHorizontal?: boolean | undefined;
 }): react_jsx_runtime.JSX.Element;
 
-export { PictureInPicture, UrlProvider, export_default as Webcam, localStore, _default as localStoreDefault, useContacts, useDeviceOrientation, useGeolocation as useGeoLocation, useInterval, useLocalStorage, useLocalStore, useNotification, usePictureInPicture, useScreenOrientation, useTimeout, useUrl, useWait, useWebcam, useWebSocket as useWebsocket };
+export { PictureInPicture, UrlProvider, export_default as Webcam, localStore, _default as localStoreDefault, useContacts, useDeviceOrientation, useGeolocation as useGeoLocation, useInterval, useLocalStorage, useLocalStore, useNotification, usePictureInPicture, useScreenOrientation, useTimeout, useUrl, useWait, useWebSocket, useWebcam };

@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "strict": true,
+    "declaration": true,
+    "declarationDir": "dist/types",
+    "outDir": "dist",
+    "baseUrl": ".",
+    "paths": {
+      "@hook/*": ["./src/hook/*"],
+      "@ux/*": ["./src/ux/*"],
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+} 

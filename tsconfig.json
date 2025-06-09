@@ -1,0 +1,11 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./package" },
+    { "path": "./demo" }
+  ],
+  "compilerOptions": {
+    "composite": true,
+    "skipLibCheck": true
+  }
+} 

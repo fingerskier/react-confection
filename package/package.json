@@ -9,8 +9,8 @@
   "types": "dist/types/index.d.ts",
   "version": "4.0.0",
   "scripts": {
-    "dev": "tsup src/index.tsx --dts --watch --format esm,cjs --silent",
-    "build": "tsup src/index.tsx --dts --format esm,cjs --silent",
+    "dev": "tsup --watch",
+    "build": "tsup",
     "lint": "eslint .",
     "test": "vitest run"
   },

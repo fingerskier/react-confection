@@ -3,23 +3,5 @@
   "references": [
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }
-  ],
-  "compilerOptions": {
-    "target": "ESNext",
-    "module": "ESNext",
-    "jsx": "react-jsx",
-    "declaration": true,
-    "declarationDir": "dist/types",
-    "outDir": "dist",
-    "moduleResolution": "node",
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "composite": true,
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"]
-    }
-  },
-  "include": ["src"]
+  ]
 }

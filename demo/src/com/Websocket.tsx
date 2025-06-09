@@ -6,9 +6,11 @@ export default function WebSocketDemo() {
   const [messages, setMessages] = useState<string[]>([])
   const { data, transmit } = useWebSocket('wss://ws.ifelse.io')
 
+
   useEffect(() => {
     if (data) setMessages(msgs => [...msgs, JSON.stringify(data)])
   }, [data])
+
 
   return (
     <div>

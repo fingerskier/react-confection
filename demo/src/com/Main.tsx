@@ -59,7 +59,7 @@ export default function Main() {
       {context==='usePictureInPicture' && <PictureInPicture />}
       {context==='useScreenOrientation' && <ScreenOrientation />}
       {context==='useTimeout' && <Timeout />}
-      {context==='useUrl' && <UrlRouting />}
+      {context.startsWith('useUrl') && <UrlRouting />}
       {context==='useWait' && <Wait />}
       {context==='useWebcam' && <Webcam />}
       {context==='useWebsocket' && <Websocket />}

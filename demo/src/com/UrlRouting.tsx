@@ -6,8 +6,38 @@ export default function UrlRouting() {
 
 
   return <div>
+    <pre>{JSON.stringify({context,query})}</pre>
     <ul>
-      <pre>{JSON.stringify({context,query}, null, 2)}</pre>
+      <li>
+        <button onClick={() => goto('./asdf', {flarn: '1'})}>./asdf, retain ?flarn=4</button>
+      </li>
+      <li>
+        <button onClick={() => goto('./qwer', {schlum: '2'})}>./asdf, retain ?flarn=4</button>
+      </li>
+      <li>
+        <button onClick={() => goto('../asdf', {flarn: '3'})}>../asdf, retain ?flarn=4</button>
+      </li>
+      
+      <li>
+        <button onClick={() => goto(null, {qwer: Math.random()})}>.., retain ?qwer=4</button>
+      </li>
+      <li>
+        <button onClick={() => goto(null, {asdf: Math.random()})}>.., retain ?asdf=4</button>
+      </li>
+      <li>
+        <button onClick={() => goto(null, {zxcv: Math.random()})}>.., retain ?zxcv=4</button>
+      </li>
+      
+      <li>
+        <button onClick={() => goto(null, {qwer: Math.random()}, true)}>.., replace ?qwer=4</button>
+      </li>
+      <li>
+        <button onClick={() => goto(null, {asdf: Math.random()}, true)}>.., replace ?asdf=4</button>
+      </li>
+      <li>
+        <button onClick={() => goto(null, {zxcv: Math.random()}, true)}>.., replace ?zxcv=4</button>
+      </li>
+      
       <li><a href="?flarn=1#asdf">flarn 1</a></li>
       <li><a href="?flarn=2#asdf/qwer">flarn 2</a></li>
       <li><a href="?flarn=3#asdf/qwer/zxcv">flarn 3</a></li>
