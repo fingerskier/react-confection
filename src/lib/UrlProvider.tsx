@@ -21,7 +21,7 @@ export function UrlProvider({ children }: UrlProviderProps) {
   const [context, setContext] = useState<string | string[]>('')
   const [query, setQuery] = useState<UseUrlQuery>({})
 
-  const goto = (path: string, Q?: UseUrlQuery, replaceQuery: boolean = false) => {
+  const goto = (path?: string, Q?: UseUrlQuery, replaceQuery: boolean = false) => {
     let newQuery
     if (replaceQuery) {
       newQuery = Q
