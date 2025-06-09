@@ -7,12 +7,12 @@ export function UrlProvider({ children }) {
     const goto = (path, Q, replaceQuery = false) => {
         let newQuery;
         if (replaceQuery) {
-            newQuery = Q;
+            newQuery = Q ?? null;
         }
         else {
             newQuery = {
                 ...query,
-                ...Q,
+                ...(Q ?? {}),
             };
         }
         const queryString = newQuery ? new URLSearchParams(newQuery).toString() : '';

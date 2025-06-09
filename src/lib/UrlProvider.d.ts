@@ -5,7 +5,7 @@ export interface UseUrlQuery {
 export interface UseUrlReturn {
     context: string | string[];
     query: UseUrlQuery;
-    goto: (path: string, newQuery?: UseUrlQuery, replace?: boolean) => void;
+    goto: (path?: string | null, newQuery?: UseUrlQuery | null, replace?: boolean) => void;
 }
 interface UrlProviderProps {
     children: ReactNode;
