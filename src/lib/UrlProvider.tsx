@@ -8,7 +8,7 @@ export interface UseUrlQuery {
 export interface UseUrlReturn {
   context: string | string[]
   query: UseUrlQuery
-  goto: (path: string, newQuery?: UseUrlQuery, replace?: boolean) => void
+  goto: (path?: string | null, newQuery?: UseUrlQuery | null, replace?: boolean) => void
 }
 
 const UrlContext = createContext<UseUrlReturn | undefined>(undefined)
@@ -21,14 +21,18 @@ export function UrlProvider({ children }: UrlProviderProps) {
   const [context, setContext] = useState<string | string[]>('')
   const [query, setQuery] = useState<UseUrlQuery>({})
 
-  const goto = (path: string, Q?: UseUrlQuery, replaceQuery: boolean = false) => {
+  const goto = (
+    path?: string | null,
+    Q?: UseUrlQuery | null,
+    replaceQuery: boolean = false,
+  ) => {
     let newQuery
     if (replaceQuery) {
-      newQuery = Q
+      newQuery = Q ?? null
     } else {
       newQuery = {
         ...query,
-        ...Q,
+        ...(Q ?? {}),
       }
     }
 
