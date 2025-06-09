@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import { useWait } from 'react-confection'
 
 
@@ -6,27 +6,26 @@ export default function Wait() {
   const [condition, setCondition] = useState(false)
   const [state, setState] = useState(false)
   
-  const wait = useWait(false, 5678)
+  const done = useWait(condition, 5678)
 
-
-  const waitForIt = ()=>{
-    wait().then(()=>{
-      setCondition(false)
-      setState('done')
-    })
-    .catch(()=>{
-      setState('timed out')
-      setCondition(false)
-    })
-  }
 
   const setConditionTrue = ()=>{
     setCondition(true)
   }
 
+
+  useEffect(()=>{
+    if (done) {
+      setState('done')
+    } else {
+      setState('waiting')
+    }
+  }, [done])
+
+
   return <>
     <h2>Wait</h2>
-    <button onClick={waitForIt}>Start Waiting</button>
     <button onClick={setConditionTrue}>Set Condition</button>
+    <p>state: {state}</p>
   </>
 }

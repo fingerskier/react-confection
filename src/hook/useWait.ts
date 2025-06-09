@@ -33,20 +33,5 @@ export default function useWait(
   }, [condition])
 
 
-  const waiter = new Promise<void>((resolve, reject) => {
-    startSafety()
-    ticker = setInterval(() => {
-      if (done) {
-        resolve(undefined)
-      }
-
-      if (timeout) {
-        clearInterval(ticker)
-        reject(new Error('Timeout'))
-      }
-    }, intervalMilliseconds)
-  })
-
-
-  return waiter
+  return done
 }
