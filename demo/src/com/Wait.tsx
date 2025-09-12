@@ -4,7 +4,7 @@ import { useWait } from 'react-confection'
 
 export default function Wait() {
   const [condition, setCondition] = useState(false)
-  const [state, setState] = useState(false)
+  const [state, setState] = useState<string>('waiting')
   
   const done = useWait(condition, 5678)
 

@@ -1,4 +1,3 @@
-import React from 'react'
 import { useGeoLocation } from 'react-confection'
 
 

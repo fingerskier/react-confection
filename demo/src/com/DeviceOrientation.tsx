@@ -1,4 +1,3 @@
-import React from 'react'
 import { useDeviceOrientation } from 'react-confection'
 
 

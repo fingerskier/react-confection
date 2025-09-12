@@ -25,9 +25,9 @@
     "paths": {
       "@com/*": ["./src/com/*"],
       "@assets/*": ["./src/assets/*"],
-      "@hook/*": ["../src/hook/*"],
-      "@ux/*": ["../src/ux/*"],
-      "react-confection": ["../src/index.ts"]
+      "@hook/*": ["../package/src/hook/*"],
+      "@ux/*": ["../package/src/ux/*"],
+      "react-confection": ["../package/src/index.tsx"]
     }
   },
   "include": ["src"]

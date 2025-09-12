@@ -1,12 +1,10 @@
-import React from 'react'
-import { Webcam } from 'react-confection'
+import { Webcam as WebcamComponent } from 'react-confection'
 
-
-export default function Webcam() {
+export default function WebcamDemo() {
   return (
     <div>
       <h2>Webcam</h2>
-      <Webcam />
+      <WebcamComponent />
     </div>
   )
 }
