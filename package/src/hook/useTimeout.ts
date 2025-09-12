@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 
+
 export default function useTimeout(callback: () => void, delay: number = 1000) {
   const id = useRef<NodeJS.Timeout>(null)
 

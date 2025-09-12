@@ -8,7 +8,7 @@ export interface UseUrlQuery {
 export interface UseUrlReturn {
   context: string | string[]
   query: UseUrlQuery
-  goto: (path?: string | null, newQuery?: UseUrlQuery | null, replace?: boolean) => void
+  goto: (path: string, newQuery?: UseUrlQuery | null, replace?: boolean) => void
 }
 
 const UrlContext = createContext<UseUrlReturn | undefined>(undefined)

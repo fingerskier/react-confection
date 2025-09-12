@@ -136,7 +136,7 @@ interface UseUrlQuery {
 interface UseUrlReturn {
     context: string | string[];
     query: UseUrlQuery;
-    goto: (path?: string | null, newQuery?: UseUrlQuery | null, replace?: boolean) => void;
+    goto: (path: string, newQuery?: UseUrlQuery | null, replace?: boolean) => void;
 }
 interface UrlProviderProps {
     children: ReactNode;
