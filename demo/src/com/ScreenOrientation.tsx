@@ -1,8 +1,7 @@
 import { useScreenOrientation } from 'react-confection'
 
-
 export default function ScreenOrientation() {
-  const { orientation } = useScreenOrientation()
+  const orientation = useScreenOrientation()
 
   return (
     <div>

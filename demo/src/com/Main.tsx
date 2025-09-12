@@ -33,7 +33,7 @@ const TESTOR = [
 
 
 export default function Main() {
-  const { context, query, goto } = useUrl()
+  const { context, query } = useUrl()
 
   useEffect(() => {
     console.log('context', context)
@@ -59,7 +59,7 @@ export default function Main() {
       {context==='usePictureInPicture' && <PictureInPicture />}
       {context==='useScreenOrientation' && <ScreenOrientation />}
       {context==='useTimeout' && <Timeout />}
-      {context.startsWith('useUrl') && <UrlRouting />}
+      {typeof context === 'string' && context.startsWith('useUrl') && <UrlRouting />}
       {context==='useWait' && <Wait />}
       {context==='useWebcam' && <Webcam />}
       {context==='useWebsocket' && <Websocket />}

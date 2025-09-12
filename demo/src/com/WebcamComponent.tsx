@@ -1,4 +1,3 @@
-import React from 'react'
 import { Webcam } from 'react-confection'
 
 export default function WebcamComponentDemo() {

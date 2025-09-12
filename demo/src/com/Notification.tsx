@@ -1,9 +1,8 @@
-import React from 'react'
 import { useNotification } from 'react-confection'
 
 
 export default function Notification() {
-  const [notify, permission] = useNotification()
+  const [notify] = useNotification()
 
   return (
     <div>

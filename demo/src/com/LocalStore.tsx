@@ -1,4 +1,3 @@
-import React from 'react'
 import { useLocalStore } from 'react-confection'
 
 
@@ -14,7 +13,7 @@ export default function LocalStore() {
 
 
 function First() {
-  const Store = useLocalStore('flarn')
+  const Store = useLocalStore('flarn') as any
 
   return <div>
     <label>
@@ -26,7 +25,7 @@ function First() {
 
 
 function Second() {
-  const Store = useLocalStore('flarn')
+  const Store = useLocalStore('flarn') as any
 
   return <div>
     <label>
